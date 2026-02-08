@@ -1,0 +1,45 @@
+version: '3'
+services:
+  
+  prometheus:
+    image: prom/prometheus
+    container_name: prometheus
+    volumes:
+      - "./prometheus.yml:/etc/prometheus/prometheus.yml"
+      - "./rules.yml:/etc/prometheus/rules.yml"
+    networks:
+      - localprom
+    ports:
+      - 9091:9090
+  
+  node-exporter:
+    image: prom/node-exporter
+    container_name: node-exporter
+    networks:
+      - localprom
+    ports:
+      - 9100:9100
+  
+  alert-manager:
+    image: prom/alertmanager
+    container_name: alert-manager
+    volumes:
+      - "./alertmanager.yml:/alertmanager/alertmanager.yml"
+    networks:
+      - localprom
+    ports:
+      - 9093:9093
+  
+  grafana:
+    image: grafana/grafana
+    container_name: grafana
+    volumes:
+      - ./provisioning:/etc/grafana/provisioning
+    networks:
+      - localprom
+    ports:
+      - 3000:3000
+
+networks:
+  localprom:
+    driver: bridge
