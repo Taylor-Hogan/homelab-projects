@@ -1,0 +1,20 @@
+---
+- name: Update OS based on distribution
+  hosts: ec2-nodes
+  become: true
+  gather_facts: true
+
+  vars:
+   # release_version: "2023.2"   # <-- set your target Amazon Linux release here
+    release_version: "{{ lookup('amazon.aws.ssm_parameter', '/os/amazonlinux/release_version', region='us-east-1', decrypt=True) }}"
+  tasks:
+    - name: Update packages on RedHat
+      command: dnf update -y
+      when:
+       - ansible_facts['os_family'] == "RedHat"
+       - ansible_facts['distribution'] == "RedHat"
+
+    - name: System release upgrade on Amazon Linux
+      command: dnf --releasever {{ release_version }} -y
+      when:
+       - ansible_facts['distribution'] == "Amazon"

@@ -1,0 +1,13 @@
+[test]
+192.168.1.178  #ansible cointroller-grafana
+192.168.1.158 #ipa svr
+192.168.1.159 #ipa replcia
+
+
+[grafana]
+192.168.1.178  #ansible cointroller-grafana
+
+[nodes]
+192.168.1.158 #ipa svr
+192.168.1.159 #ipa replcia
+

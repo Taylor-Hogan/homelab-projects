@@ -1,0 +1,24 @@
+#SPDX-License-Identifier: MIT-0
+---
+# tasks file for role-example
+#
+#
+  
+ # - name: Update hosts by release version
+ #   ansible.builtin.command: 
+ #   command: dnf upgrade 
+
+
+- name: Patch AL 23 host with latest AMI release version. 
+  ansible.builtin.package:
+    name: "*"
+    state: present
+  when: ansible_facts.distribution =='Rocky' and ansible_facts.distribution_major_version >= '10'
+  ignore_errors: true
+  register: output
+
+- name: print packages being updated
+  ansible.builtin.debug:
+    #msg: {{ output }}
+    var: output
+

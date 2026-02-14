@@ -1,0 +1,19 @@
+FROM fedora:43 
+WORKDIR /home
+#RUN hostnamectl set-hostname cnt-devops
+RUN dnf install -y yum-utils
+RUN sudo dnf install -y dnf-plugins-core
+RUN sudo dnf config-manager addrepo --from-repofile=https://rpm.releases.hashicorp.com/fedora/hashicorp.repo
+#RUN dnf install https://dl.fedoraproject.org/pub/epel/epel-release-latest-9.noarch.rpm
+#RUN dnf config-manager --add-repo https://rpm.releases.hashicorp.com/fedora/hashicorp.repo
+RUN dnf update -y
+RUN dnf install -y  ansible
+RUN dnf -y install packer
+RUN cat /etc/os-release
+RUN ansible --version
+RUN packer --version
+RUN python --version
+RUN dnf clean all
+
+#RUN microdnf update -y
+

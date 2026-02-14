@@ -1,0 +1,15 @@
+- name: Ensure user ansible-svc exists and is in wheel and sudo groups add comment "used for ansible"
+
+  hosts: all
+  become: true
+  tasks:
+    - name: Create/modify user ansible-svc
+      ansible.builtin.user:
+        name: ansible-svc
+        shell: /bin/bash
+        groups: wheel,sudo
+        append: yes
+        state: present
+        comment: "used for ansible"
+        create_home: yes
+        

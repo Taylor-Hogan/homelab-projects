@@ -1,0 +1,1177 @@
+    "ansible_facts": {
+        "all_ipv4_addresses": [
+            "192.168.1.123"
+        ],
+        "all_ipv6_addresses": [
+            "fe80::eb6a:d1b7:b80f:2131"
+        ],
+        "ansible_local": {},
+        "apparmor": {
+            "status": "disabled"
+        },
+        "architecture": "x86_64",
+        "bios_date": "06/07/2024",
+        "bios_vendor": "American Megatrends International, LLC.",
+        "bios_version": "1.D0",
+        "board_asset_tag": "To be filled by O.E.M.",
+        "board_name": "PRO A620M-E (MS-7E28)",
+        "board_serial": "NA",
+        "board_vendor": "Micro-Star International Co., Ltd.",
+        "board_version": "1.0",
+        "chassis_asset_tag": "To be filled by O.E.M.",
+        "chassis_serial": "NA",
+        "chassis_vendor": "Micro-Star International Co., Ltd.",
+        "chassis_version": "1.0",
+        "cmdline": {
+            "BOOT_IMAGE": "(hd3,gpt2)/vmlinuz-6.18.7-200.fc43.x86_64",
+            "quiet": true,
+            "rhgb": true,
+            "ro": true,
+            "root": "UUID=16b4e1a3-13db-4b7f-96d0-cfd2e4705f75",
+            "rootflags": "subvol=root"
+        },
+        "date_time": {
+            "date": "2026-02-14",
+            "day": "14",
+            "epoch": "1771050944",
+            "epoch_int": "1771050944",
+            "hour": "00",
+            "iso8601": "2026-02-14T06:35:44Z",
+            "iso8601_basic": "20260214T003544455895",
+            "iso8601_basic_short": "20260214T003544",
+            "iso8601_micro": "2026-02-14T06:35:44.455895Z",
+            "minute": "35",
+            "month": "02",
+            "second": "44",
+            "time": "00:35:44",
+            "tz": "CST",
+            "tz_dst": "CDT",
+            "tz_offset": "-0600",
+            "weekday": "Saturday",
+            "weekday_number": "6",
+            "weeknumber": "06",
+            "year": "2026"
+        },
+        "default_ipv4": {
+            "address": "192.168.1.123",
+            "alias": "enp8s0",
+            "broadcast": "192.168.1.255",
+            "gateway": "192.168.1.254",
+            "interface": "enp8s0",
+            "macaddress": "d8:43:ae:bd:05:bb",
+            "mtu": 1500,
+            "netmask": "255.255.255.0",
+            "network": "192.168.1.0",
+            "prefix": "24",
+            "type": "ether"
+        },
+        "default_ipv6": {},
+        "device_links": {
+            "ids": {
+                "nvme0n1": [
+                    "nvme-SAMSUNG_MZVLB256HAHQ-000H1_S425NX2KC32849",
+                    "nvme-SAMSUNG_MZVLB256HAHQ-000H1_S425NX2KC32849_1",
+                    "nvme-eui.0025388c81b538a9"
+                ],
+                "nvme0n1p1": [
+                    "nvme-SAMSUNG_MZVLB256HAHQ-000H1_S425NX2KC32849-part1",
+                    "nvme-SAMSUNG_MZVLB256HAHQ-000H1_S425NX2KC32849_1-part1",
+                    "nvme-eui.0025388c81b538a9-part1"
+                ],
+                "nvme0n1p2": [
+                    "nvme-SAMSUNG_MZVLB256HAHQ-000H1_S425NX2KC32849-part2",
+                    "nvme-SAMSUNG_MZVLB256HAHQ-000H1_S425NX2KC32849_1-part2",
+                    "nvme-eui.0025388c81b538a9-part2"
+                ],
+                "nvme0n1p3": [
+                    "nvme-SAMSUNG_MZVLB256HAHQ-000H1_S425NX2KC32849-part3",
+                    "nvme-SAMSUNG_MZVLB256HAHQ-000H1_S425NX2KC32849_1-part3",
+                    "nvme-eui.0025388c81b538a9-part3"
+                ],
+                "sda": [
+                    "ata-KINGSTON_SEDC450R1920G_50026B7282786A8D",
+                    "wwn-0x50026b7282786a8d"
+                ],
+                "sda1": [
+                    "ata-KINGSTON_SEDC450R1920G_50026B7282786A8D-part1",
+                    "wwn-0x50026b7282786a8d-part1"
+                ],
+                "sdb": [
+                    "ata-TEAM_T253512GB_TPBF2302090010201734"
+                ],
+                "sdb1": [
+                    "ata-TEAM_T253512GB_TPBF2302090010201734-part1"
+                ],
+                "sdb2": [
+                    "ata-TEAM_T253512GB_TPBF2302090010201734-part2"
+                ],
+                "sdb3": [
+                    "ata-TEAM_T253512GB_TPBF2302090010201734-part3"
+                ],
+                "sdb4": [
+                    "ata-TEAM_T253512GB_TPBF2302090010201734-part4"
+                ],
+                "sdc": [
+                    "ata-CT2000MX500SSD1_2205E605DACC",
+                    "wwn-0x500a0751e605dacc"
+                ],
+                "sdc1": [
+                    "ata-CT2000MX500SSD1_2205E605DACC-part1",
+                    "wwn-0x500a0751e605dacc-part1"
+                ]
+            },
+            "labels": {
+                "nvme0n1p3": [
+                    "fedora"
+                ],
+                "sda1": [
+                    "LinuxStorage"
+                ],
+                "sdc1": [
+                    "SSD_Storage_2TB"
+                ],
+                "zram0": [
+                    "zram0"
+                ]
+            },
+            "masters": {},
+            "uuids": {
+                "nvme0n1p1": [
+                    "9DE0-074A"
+                ],
+                "nvme0n1p2": [
+                    "52df1e5b-31f0-4a5b-8dd1-73e6c37bdf3f"
+                ],
+                "nvme0n1p3": [
+                    "16b4e1a3-13db-4b7f-96d0-cfd2e4705f75"
+                ],
+                "sda1": [
+                    "d72015cc-ce18-45a7-91cd-60672df4761d"
+                ],
+                "sdb1": [
+                    "225B-E6F2"
+                ],
+                "sdb3": [
+                    "74825D06825CCE6C"
+                ],
+                "sdb4": [
+                    "0218369D18369021"
+                ],
+                "sdc1": [
+                    "96E85EE9E85EC761"
+                ],
+                "zram0": [
+                    "55f38c68-a4f4-4867-b5e6-0ce0c9a88c69"
+                ]
+            }
+        },
+        "devices": {
+            "nvme0n1": {
+                "holders": [],
+                "host": "Non-Volatile memory controller: Samsung Electronics Co Ltd NVMe SSD Controller SM981/PM981/PM983",
+                "links": {
+                    "ids": [
+                        "nvme-SAMSUNG_MZVLB256HAHQ-000H1_S425NX2KC32849",
+                        "nvme-SAMSUNG_MZVLB256HAHQ-000H1_S425NX2KC32849_1",
+                        "nvme-eui.0025388c81b538a9"
+                    ],
+                    "labels": [],
+                    "masters": [],
+                    "uuids": []
+                },
+                "model": "SAMSUNG MZVLB256HAHQ-000H1",
+                "partitions": {
+                    "nvme0n1p1": {
+                        "holders": [],
+                        "links": {
+                            "ids": [
+                                "nvme-SAMSUNG_MZVLB256HAHQ-000H1_S425NX2KC32849-part1",
+                                "nvme-SAMSUNG_MZVLB256HAHQ-000H1_S425NX2KC32849_1-part1",
+                                "nvme-eui.0025388c81b538a9-part1"
+                            ],
+                            "labels": [],
+                            "masters": [],
+                            "uuids": [
+                                "9DE0-074A"
+                            ]
+                        },
+                        "sectors": 1228800,
+                        "sectorsize": 512,
+                        "size": "600.00 MB",
+                        "start": "2048",
+                        "uuid": "9DE0-074A"
+                    },
+                    "nvme0n1p2": {
+                        "holders": [],
+                        "links": {
+                            "ids": [
+                                "nvme-SAMSUNG_MZVLB256HAHQ-000H1_S425NX2KC32849-part2",
+                                "nvme-SAMSUNG_MZVLB256HAHQ-000H1_S425NX2KC32849_1-part2",
+                                "nvme-eui.0025388c81b538a9-part2"
+                            ],
+                            "labels": [],
+                            "masters": [],
+                            "uuids": [
+                                "52df1e5b-31f0-4a5b-8dd1-73e6c37bdf3f"
+                            ]
+                        },
+                        "sectors": 2097152,
+                        "sectorsize": 512,
+                        "size": "1.00 GB",
+                        "start": "1230848",
+                        "uuid": "52df1e5b-31f0-4a5b-8dd1-73e6c37bdf3f"
+                    },
+                    "nvme0n1p3": {
+                        "holders": [],
+                        "links": {
+                            "ids": [
+                                "nvme-SAMSUNG_MZVLB256HAHQ-000H1_S425NX2KC32849-part3",
+                                "nvme-SAMSUNG_MZVLB256HAHQ-000H1_S425NX2KC32849_1-part3",
+                                "nvme-eui.0025388c81b538a9-part3"
+                            ],
+                            "labels": [
+                                "fedora"
+                            ],
+                            "masters": [],
+                            "uuids": [
+                                "16b4e1a3-13db-4b7f-96d0-cfd2e4705f75"
+                            ]
+                        },
+                        "sectors": 496789504,
+                        "sectorsize": 512,
+                        "size": "236.89 GB",
+                        "start": "3328000",
+                        "uuid": "16b4e1a3-13db-4b7f-96d0-cfd2e4705f75"
+                    }
+                },
+                "removable": "0",
+                "rotational": "0",
+                "sas_address": null,
+                "sas_device_handle": null,
+                "scheduler_mode": "none",
+                "sectors": 500118192,
+                "sectorsize": "512",
+                "serial": "S425NX2KC32849",
+                "size": "238.47 GB",
+                "support_discard": "512",
+                "vendor": null,
+                "virtual": 1
+            },
+            "sda": {
+                "holders": [],
+                "host": "SATA controller: Advanced Micro Devices, Inc. [AMD] 600 Series Chipset SATA Controller (rev 01)",
+                "links": {
+                    "ids": [
+                        "ata-KINGSTON_SEDC450R1920G_50026B7282786A8D",
+                        "wwn-0x50026b7282786a8d"
+                    ],
+                    "labels": [],
+                    "masters": [],
+                    "uuids": []
+                },
+                "model": "KINGSTON SEDC450",
+                "partitions": {
+                    "sda1": {
+                        "holders": [],
+                        "links": {
+                            "ids": [
+                                "ata-KINGSTON_SEDC450R1920G_50026B7282786A8D-part1",
+                                "wwn-0x50026b7282786a8d-part1"
+                            ],
+                            "labels": [
+                                "LinuxStorage"
+                            ],
+                            "masters": [],
+                            "uuids": [
+                                "d72015cc-ce18-45a7-91cd-60672df4761d"
+                            ]
+                        },
+                        "sectors": 3750748126,
+                        "sectorsize": 512,
+                        "size": "1.75 TB",
+                        "start": "34",
+                        "uuid": "d72015cc-ce18-45a7-91cd-60672df4761d"
+                    }
+                },
+                "removable": "0",
+                "rotational": "0",
+                "sas_address": null,
+                "sas_device_handle": null,
+                "scheduler_mode": "bfq",
+                "sectors": 3750748848,
+                "sectorsize": "512",
+                "size": "1.75 TB",
+                "support_discard": "512",
+                "vendor": "ATA",
+                "virtual": 1,
+                "wwn": "0x50026b7282786a8d"
+            },
+            "sdb": {
+                "holders": [],
+                "host": "SATA controller: Advanced Micro Devices, Inc. [AMD] 600 Series Chipset SATA Controller (rev 01)",
+                "links": {
+                    "ids": [
+                        "ata-TEAM_T253512GB_TPBF2302090010201734"
+                    ],
+                    "labels": [],
+                    "masters": [],
+                    "uuids": []
+                },
+                "model": "TEAM T253512GB",
+                "partitions": {
+                    "sdb1": {
+                        "holders": [],
+                        "links": {
+                            "ids": [
+                                "ata-TEAM_T253512GB_TPBF2302090010201734-part1"
+                            ],
+                            "labels": [],
+                            "masters": [],
+                            "uuids": [
+                                "225B-E6F2"
+                            ]
+                        },
+                        "sectors": 204800,
+                        "sectorsize": 512,
+                        "size": "100.00 MB",
+                        "start": "2048",
+                        "uuid": "225B-E6F2"
+                    },
+                    "sdb2": {
+                        "holders": [],
+                        "links": {
+                            "ids": [
+                                "ata-TEAM_T253512GB_TPBF2302090010201734-part2"
+                            ],
+                            "labels": [],
+                            "masters": [],
+                            "uuids": []
+                        },
+                        "sectors": 32768,
+                        "sectorsize": 512,
+                        "size": "16.00 MB",
+                        "start": "206848",
+                        "uuid": null
+                    },
+                    "sdb3": {
+                        "holders": [],
+                        "links": {
+                            "ids": [
+                                "ata-TEAM_T253512GB_TPBF2302090010201734-part3"
+                            ],
+                            "labels": [],
+                            "masters": [],
+                            "uuids": [
+                                "74825D06825CCE6C"
+                            ]
+                        },
+                        "sectors": 998400000,
+                        "sectorsize": 512,
+                        "size": "476.07 GB",
+                        "start": "239616",
+                        "uuid": "74825D06825CCE6C"
+                    },
+                    "sdb4": {
+                        "holders": [],
+                        "links": {
+                            "ids": [
+                                "ata-TEAM_T253512GB_TPBF2302090010201734-part4"
+                            ],
+                            "labels": [],
+                            "masters": [],
+                            "uuids": [
+                                "0218369D18369021"
+                            ]
+                        },
+                        "sectors": 1572864,
+                        "sectorsize": 512,
+                        "size": "768.00 MB",
+                        "start": "998639616",
+                        "uuid": "0218369D18369021"
+                    }
+                },
+                "removable": "0",
+                "rotational": "0",
+                "sas_address": null,
+                "sas_device_handle": null,
+                "scheduler_mode": "bfq",
+                "sectors": 1000215216,
+                "sectorsize": "512",
+                "size": "476.94 GB",
+                "support_discard": "512",
+                "vendor": "ATA",
+                "virtual": 1
+            },
+            "sdc": {
+                "holders": [],
+                "host": "SATA controller: Advanced Micro Devices, Inc. [AMD] 600 Series Chipset SATA Controller (rev 01)",
+                "links": {
+                    "ids": [
+                        "ata-CT2000MX500SSD1_2205E605DACC",
+                        "wwn-0x500a0751e605dacc"
+                    ],
+                    "labels": [],
+                    "masters": [],
+                    "uuids": []
+                },
+                "model": "CT2000MX500SSD1",
+                "partitions": {
+                    "sdc1": {
+                        "holders": [],
+                        "links": {
+                            "ids": [
+                                "ata-CT2000MX500SSD1_2205E605DACC-part1",
+                                "wwn-0x500a0751e605dacc-part1"
+                            ],
+                            "labels": [
+                                "SSD_Storage_2TB"
+                            ],
+                            "masters": [],
+                            "uuids": [
+                                "96E85EE9E85EC761"
+                            ]
+                        },
+                        "sectors": 3907026944,
+                        "sectorsize": 512,
+                        "size": "1.82 TB",
+                        "start": "2048",
+                        "uuid": "96E85EE9E85EC761"
+                    }
+                },
+                "removable": "0",
+                "rotational": "0",
+                "sas_address": null,
+                "sas_device_handle": null,
+                "scheduler_mode": "bfq",
+                "sectors": 3907029168,
+                "sectorsize": "512",
+                "size": "1.82 TB",
+                "support_discard": "4096",
+                "vendor": "ATA",
+                "virtual": 1,
+                "wwn": "0x500a0751e605dacc"
+            },
+            "zram0": {
+                "holders": [],
+                "host": "",
+                "links": {
+                    "ids": [],
+                    "labels": [
+                        "zram0"
+                    ],
+                    "masters": [],
+                    "uuids": [
+                        "55f38c68-a4f4-4867-b5e6-0ce0c9a88c69"
+                    ]
+                },
+                "model": null,
+                "partitions": {},
+                "removable": "0",
+                "rotational": "0",
+                "sas_address": null,
+                "sas_device_handle": null,
+                "scheduler_mode": "",
+                "sectors": 2097152,
+                "sectorsize": "4096",
+                "size": "8.00 GB",
+                "support_discard": "4096",
+                "vendor": null,
+                "virtual": 1
+            }
+        },
+        "distribution": "Fedora",
+        "distribution_file_parsed": true,
+        "distribution_file_path": "/etc/redhat-release",
+        "distribution_file_variety": "RedHat",
+        "distribution_major_version": "43",
+        "distribution_release": "",
+        "distribution_version": "43",
+        "dns": {
+            "nameservers": [
+                "127.0.0.53"
+            ],
+            "options": {
+                "edns0": true,
+                "trust-ad": true
+            },
+            "search": [
+                "attlocal.net"
+            ]
+        },
+        "domain": "",
+        "effective_group_id": 1000,
+        "effective_user_id": 1000,
+        "enp8s0": {
+            "active": true,
+            "device": "enp8s0",
+            "features": {
+                "esp_hw_offload": "off [fixed]",
+                "esp_tx_csum_hw_offload": "off [fixed]",
+                "generic_receive_offload": "on",
+                "generic_segmentation_offload": "on",
+                "highdma": "on [fixed]",
+                "hsr_dup_offload": "off [fixed]",
+                "hsr_fwd_offload": "off [fixed]",
+                "hsr_tag_ins_offload": "off [fixed]",
+                "hsr_tag_rm_offload": "off [fixed]",
+                "hw_tc_offload": "off [fixed]",
+                "l2_fwd_offload": "off [fixed]",
+                "large_receive_offload": "off [fixed]",
+                "loopback": "off [fixed]",
+                "macsec_hw_offload": "off [fixed]",
+                "ntuple_filters": "off [fixed]",
+                "receive_hashing": "off [fixed]",
+                "rx_all": "off",
+                "rx_checksumming": "on",
+                "rx_fcs": "off",
+                "rx_gro_hw": "off [fixed]",
+                "rx_gro_list": "off",
+                "rx_udp_gro_forwarding": "off",
+                "rx_udp_tunnel_port_offload": "off [fixed]",
+                "rx_vlan_filter": "off [fixed]",
+                "rx_vlan_offload": "on",
+                "rx_vlan_stag_filter": "off [fixed]",
+                "rx_vlan_stag_hw_parse": "off [fixed]",
+                "scatter_gather": "on",
+                "tcp_segmentation_offload": "on",
+                "tls_hw_record": "off [fixed]",
+                "tls_hw_rx_offload": "off [fixed]",
+                "tls_hw_tx_offload": "off [fixed]",
+                "tx_checksum_fcoe_crc": "off [fixed]",
+                "tx_checksum_ip_generic": "off [fixed]",
+                "tx_checksum_ipv4": "on",
+                "tx_checksum_ipv6": "on",
+                "tx_checksum_sctp": "off [fixed]",
+                "tx_checksumming": "on",
+                "tx_esp_segmentation": "off [fixed]",
+                "tx_fcoe_segmentation": "off [fixed]",
+                "tx_gre_csum_segmentation": "off [fixed]",
+                "tx_gre_segmentation": "off [fixed]",
+                "tx_gso_list": "off [fixed]",
+                "tx_gso_partial": "off [fixed]",
+                "tx_gso_robust": "off [fixed]",
+                "tx_ipxip4_segmentation": "off [fixed]",
+                "tx_ipxip6_segmentation": "off [fixed]",
+                "tx_nocache_copy": "off",
+                "tx_scatter_gather": "on",
+                "tx_scatter_gather_fraglist": "off [fixed]",
+                "tx_sctp_segmentation": "off [fixed]",
+                "tx_tcp6_segmentation": "on",
+                "tx_tcp_accecn_segmentation": "off [fixed]",
+                "tx_tcp_ecn_segmentation": "off [fixed]",
+                "tx_tcp_mangleid_segmentation": "off",
+                "tx_tcp_segmentation": "on",
+                "tx_tunnel_remcsum_segmentation": "off [fixed]",
+                "tx_udp_segmentation": "off [fixed]",
+                "tx_udp_tnl_csum_segmentation": "off [fixed]",
+                "tx_udp_tnl_segmentation": "off [fixed]",
+                "tx_vlan_offload": "on",
+                "tx_vlan_stag_hw_insert": "off [fixed]",
+                "vlan_challenged": "off [fixed]"
+            },
+            "hw_timestamp_filters": [],
+            "ipv4": {
+                "address": "192.168.1.123",
+                "broadcast": "192.168.1.255",
+                "netmask": "255.255.255.0",
+                "network": "192.168.1.0",
+                "prefix": "24"
+            },
+            "ipv6": [
+                {
+                    "address": "fe80::eb6a:d1b7:b80f:2131",
+                    "prefix": "64",
+                    "scope": "link"
+                }
+            ],
+            "macaddress": "d8:43:ae:bd:05:bb",
+            "module": "r8169",
+            "mtu": 1500,
+            "pciid": "0000:08:00.0",
+            "promisc": false,
+            "speed": 1000,
+            "timestamping": [],
+            "type": "ether"
+        },
+        "env": {
+            "COLORTERM": "truecolor",
+            "DBUS_SESSION_BUS_ADDRESS": "unix:path=/run/user/1000/bus",
+            "DEBUGINFOD_IMA_CERT_PATH": "/etc/keys/ima:",
+            "DEBUGINFOD_URLS": "ima:enforcing https://debuginfod.fedoraproject.org/ ima:ignore ",
+            "DESKTOP_SESSION": "gnome",
+            "DISPLAY": ":0",
+            "DOCKER_HOST": "unix:///run/user/1000/podman/podman.sock",
+            "EDITOR": "/usr/bin/nano",
+            "FLATPAK_TTY_PROGRESS": "1",
+            "GDMSESSION": "gnome",
+            "GDM_LANG": "en_US.UTF-8",
+            "GNOME_SETUP_DISPLAY": ":1",
+            "GPG_TTY": "/dev/pts/0",
+            "HISTCONTROL": "ignoredups",
+            "HISTSIZE": "1000",
+            "HOME": "/home/thogan",
+            "HOSTNAME": "fedora",
+            "INVOCATION_ID": "d0e27d80cd4b4fce9791ceb1d58c04c5",
+            "JOURNAL_STREAM": "9:2592188",
+            "LANG": "en_US.UTF-8",
+            "LESSOPEN": "||/usr/bin/lesspipe.sh %s",
+            "LOGNAME": "thogan",
+            "LS_COLORS": "rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=01;37;41:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.7z=01;31:*.ace=01;31:*.alz=01;31:*.apk=01;31:*.arc=01;31:*.arj=01;31:*.bz=01;31:*.bz2=01;31:*.cab=01;31:*.cpio=01;31:*.crate=01;31:*.deb=01;31:*.drpm=01;31:*.dwm=01;31:*.dz=01;31:*.ear=01;31:*.egg=01;31:*.esd=01;31:*.gz=01;31:*.jar=01;31:*.lha=01;31:*.lrz=01;31:*.lz=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.lzo=01;31:*.pyz=01;31:*.rar=01;31:*.rpm=01;31:*.rz=01;31:*.sar=01;31:*.swm=01;31:*.t7z=01;31:*.tar=01;31:*.taz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tgz=01;31:*.tlz=01;31:*.txz=01;31:*.tz=01;31:*.tzo=01;31:*.tzst=01;31:*.udeb=01;31:*.war=01;31:*.whl=01;31:*.wim=01;31:*.xz=01;31:*.z=01;31:*.zip=01;31:*.zoo=01;31:*.zst=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.jxl=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=01;36:*.au=01;36:*.flac=01;36:*.m4a=01;36:*.mid=01;36:*.midi=01;36:*.mka=01;36:*.mp3=01;36:*.mpc=01;36:*.ogg=01;36:*.ra=01;36:*.wav=01;36:*.oga=01;36:*.opus=01;36:*.spx=01;36:*.xspf=01;36:*~=00;90:*#=00;90:*.bak=00;90:*.crdownload=00;90:*.dpkg-dist=00;90:*.dpkg-new=00;90:*.dpkg-old=00;90:*.dpkg-tmp=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:*.swp=00;90:*.tmp=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:",
+            "MAIL": "/var/spool/mail/thogan",
+            "MANAGERPID": "3424",
+            "MANAGERPIDFDID": "3425",
+            "MEMORY_PRESSURE_WATCH": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/dbus-:1.2-org.gnome.Ptyxis@2.service/memory.pressure",
+            "MEMORY_PRESSURE_WRITE": "c29tZSAyMDAwMDAgMjAwMDAwMAA=",
+            "MOZ_GMP_PATH": "/usr/lib64/mozilla/plugins/gmp-gmpopenh264/system-installed",
+            "OLDPWD": "/home/thogan/Documents/ansible",
+            "PATH": "/home/thogan/.local/bin:/home/thogan/bin:/usr/local/bin:/usr/bin",
+            "PTYXIS_PROFILE": "7cae229e12eca62ab32096d6697c012f",
+            "PTYXIS_VERSION": "49.2",
+            "PWD": "/home/thogan/Documents/ansible/ansible-playbooks",
+            "QT_IM_MODULE": "ibus",
+            "QT_IM_MODULES": "wayland;ibus",
+            "SDL_VIDEO_MINIMIZE_ON_FOCUS_LOSS": "0",
+            "SHELL": "/bin/bash",
+            "SHLVL": "2",
+            "SSH_AUTH_SOCK": "/run/user/1000/gcr/ssh",
+            "STEAM_FRAME_FORCE_CLOSE": "1",
+            "SYSTEMD_EXEC_PID": "519331",
+            "TERM": "xterm-256color",
+            "USER": "thogan",
+            "USERNAME": "thogan",
+            "VTE_VERSION": "8203",
+            "WAYLAND_DISPLAY": "wayland-0",
+            "XAUTHORITY": "/run/user/1000/.mutter-Xwaylandauth.0B13J3",
+            "XDG_CURRENT_DESKTOP": "GNOME",
+            "XDG_DATA_DIRS": "/home/thogan/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share/:/usr/share/",
+            "XDG_MENU_PREFIX": "gnome-",
+            "XDG_RUNTIME_DIR": "/run/user/1000",
+            "XDG_SESSION_CLASS": "user",
+            "XDG_SESSION_DESKTOP": "gnome",
+            "XDG_SESSION_TYPE": "wayland",
+            "XMODIFIERS": "@im=ibus",
+            "_": "/usr/bin/python3"
+        },
+        "fibre_channel_wwn": [],
+        "fips": false,
+        "flags": [
+            "fpu",
+            "vme",
+            "de",
+            "pse",
+            "tsc",
+            "msr",
+            "pae",
+            "mce",
+            "cx8",
+            "apic",
+            "sep",
+            "mtrr",
+            "pge",
+            "mca",
+            "cmov",
+            "pat",
+            "pse36",
+            "clflush",
+            "mmx",
+            "fxsr",
+            "sse",
+            "sse2",
+            "ht",
+            "syscall",
+            "nx",
+            "mmxext",
+            "fxsr_opt",
+            "pdpe1gb",
+            "rdtscp",
+            "lm",
+            "constant_tsc",
+            "rep_good",
+            "amd_lbr_v2",
+            "nopl",
+            "xtopology",
+            "nonstop_tsc",
+            "cpuid",
+            "extd_apicid",
+            "aperfmperf",
+            "rapl",
+            "pni",
+            "pclmulqdq",
+            "monitor",
+            "ssse3",
+            "fma",
+            "cx16",
+            "sse4_1",
+            "sse4_2",
+            "movbe",
+            "popcnt",
+            "aes",
+            "xsave",
+            "avx",
+            "f16c",
+            "rdrand",
+            "lahf_lm",
+            "cmp_legacy",
+            "svm",
+            "extapic",
+            "cr8_legacy",
+            "abm",
+            "sse4a",
+            "misalignsse",
+            "3dnowprefetch",
+            "osvw",
+            "ibs",
+            "skinit",
+            "wdt",
+            "tce",
+            "topoext",
+            "perfctr_core",
+            "perfctr_nb",
+            "bpext",
+            "perfctr_llc",
+            "mwaitx",
+            "cpuid_fault",
+            "cpb",
+            "cat_l3",
+            "cdp_l3",
+            "hw_pstate",
+            "ssbd",
+            "mba",
+            "perfmon_v2",
+            "ibrs",
+            "ibpb",
+            "stibp",
+            "ibrs_enhanced",
+            "vmmcall",
+            "fsgsbase",
+            "bmi1",
+            "avx2",
+            "smep",
+            "bmi2",
+            "erms",
+            "invpcid",
+            "cqm",
+            "rdt_a",
+            "avx512f",
+            "avx512dq",
+            "rdseed",
+            "adx",
+            "smap",
+            "avx512ifma",
+            "clflushopt",
+            "clwb",
+            "avx512cd",
+            "sha_ni",
+            "avx512bw",
+            "avx512vl",
+            "xsaveopt",
+            "xsavec",
+            "xgetbv1",
+            "xsaves",
+            "cqm_llc",
+            "cqm_occup_llc",
+            "cqm_mbm_total",
+            "cqm_mbm_local",
+            "user_shstk",
+            "avx512_bf16",
+            "clzero",
+            "irperf",
+            "xsaveerptr",
+            "rdpru",
+            "wbnoinvd",
+            "cppc",
+            "arat",
+            "npt",
+            "lbrv",
+            "svm_lock",
+            "nrip_save",
+            "tsc_scale",
+            "vmcb_clean",
+            "flushbyasid",
+            "decodeassists",
+            "pausefilter",
+            "pfthreshold",
+            "avic",
+            "vgif",
+            "x2avic",
+            "v_spec_ctrl",
+            "vnmi",
+            "avx512vbmi",
+            "umip",
+            "pku",
+            "ospke",
+            "avx512_vbmi2",
+            "gfni",
+            "vaes",
+            "vpclmulqdq",
+            "avx512_vnni",
+            "avx512_bitalg",
+            "avx512_vpopcntdq",
+            "rdpid",
+            "overflow_recov",
+            "succor",
+            "smca",
+            "fsrm",
+            "flush_l1d",
+            "amd_lbr_pmc_freeze"
+        ],
+        "form_factor": "Desktop",
+        "fqdn": "fedora",
+        "gather_subset": [
+            "all"
+        ],
+        "hostname": "fedora",
+        "hostnqn": "nqn.2014-08.org.nvmexpress:uuid:75e8a66a-a320-5415-a53d-d843aebd05bb",
+        "interfaces": [
+            "enp8s0",
+            "lo"
+        ],
+        "is_chroot": false,
+        "iscsi_iqn": "",
+        "kernel": "6.18.7-200.fc43.x86_64",
+        "kernel_version": "#1 SMP PREEMPT_DYNAMIC Fri Jan 23 16:42:34 UTC 2026",
+        "lo": {
+            "active": true,
+            "device": "lo",
+            "features": {
+                "esp_hw_offload": "off [fixed]",
+                "esp_tx_csum_hw_offload": "off [fixed]",
+                "generic_receive_offload": "on",
+                "generic_segmentation_offload": "on",
+                "highdma": "on [fixed]",
+                "hsr_dup_offload": "off [fixed]",
+                "hsr_fwd_offload": "off [fixed]",
+                "hsr_tag_ins_offload": "off [fixed]",
+                "hsr_tag_rm_offload": "off [fixed]",
+                "hw_tc_offload": "off [fixed]",
+                "l2_fwd_offload": "off [fixed]",
+                "large_receive_offload": "off [fixed]",
+                "loopback": "on [fixed]",
+                "macsec_hw_offload": "off [fixed]",
+                "ntuple_filters": "off [fixed]",
+                "receive_hashing": "off [fixed]",
+                "rx_all": "off [fixed]",
+                "rx_checksumming": "on [fixed]",
+                "rx_fcs": "off [fixed]",
+                "rx_gro_hw": "off [fixed]",
+                "rx_gro_list": "off",
+                "rx_udp_gro_forwarding": "off",
+                "rx_udp_tunnel_port_offload": "off [fixed]",
+                "rx_vlan_filter": "off [fixed]",
+                "rx_vlan_offload": "off [fixed]",
+                "rx_vlan_stag_filter": "off [fixed]",
+                "rx_vlan_stag_hw_parse": "off [fixed]",
+                "scatter_gather": "on",
+                "tcp_segmentation_offload": "on",
+                "tls_hw_record": "off [fixed]",
+                "tls_hw_rx_offload": "off [fixed]",
+                "tls_hw_tx_offload": "off [fixed]",
+                "tx_checksum_fcoe_crc": "off [fixed]",
+                "tx_checksum_ip_generic": "on [fixed]",
+                "tx_checksum_ipv4": "off [fixed]",
+                "tx_checksum_ipv6": "off [fixed]",
+                "tx_checksum_sctp": "on [fixed]",
+                "tx_checksumming": "on",
+                "tx_esp_segmentation": "off [fixed]",
+                "tx_fcoe_segmentation": "off [fixed]",
+                "tx_gre_csum_segmentation": "off [fixed]",
+                "tx_gre_segmentation": "off [fixed]",
+                "tx_gso_list": "on",
+                "tx_gso_partial": "off [fixed]",
+                "tx_gso_robust": "off [fixed]",
+                "tx_ipxip4_segmentation": "off [fixed]",
+                "tx_ipxip6_segmentation": "off [fixed]",
+                "tx_nocache_copy": "off [fixed]",
+                "tx_scatter_gather": "on [fixed]",
+                "tx_scatter_gather_fraglist": "on [fixed]",
+                "tx_sctp_segmentation": "on",
+                "tx_tcp6_segmentation": "on",
+                "tx_tcp_accecn_segmentation": "on",
+                "tx_tcp_ecn_segmentation": "on",
+                "tx_tcp_mangleid_segmentation": "on",
+                "tx_tcp_segmentation": "on",
+                "tx_tunnel_remcsum_segmentation": "off [fixed]",
+                "tx_udp_segmentation": "on",
+                "tx_udp_tnl_csum_segmentation": "off [fixed]",
+                "tx_udp_tnl_segmentation": "off [fixed]",
+                "tx_vlan_offload": "off [fixed]",
+                "tx_vlan_stag_hw_insert": "off [fixed]",
+                "vlan_challenged": "on [fixed]"
+            },
+            "hw_timestamp_filters": [],
+            "ipv4": {
+                "address": "127.0.0.1",
+                "broadcast": "",
+                "netmask": "255.0.0.0",
+                "network": "127.0.0.0",
+                "prefix": "8"
+            },
+            "ipv6": [
+                {
+                    "address": "::1",
+                    "prefix": "128",
+                    "scope": "host"
+                }
+            ],
+            "mtu": 65536,
+            "promisc": false,
+            "timestamping": [],
+            "type": "loopback"
+        },
+        "loadavg": {
+            "15m": 0.39501953125,
+            "1m": 0.572265625,
+            "5m": 0.41259765625
+        },
+        "locally_reachable_ips": {
+            "ipv4": [
+                "127.0.0.0/8",
+                "127.0.0.1",
+                "192.168.1.123"
+            ],
+            "ipv6": [
+                "::1",
+                "fe80::eb6a:d1b7:b80f:2131"
+            ]
+        },
+        "lsb": {},
+        "lvm": "N/A",
+        "machine": "x86_64",
+        "machine_id": "628df7be63974082bb1d99dc47127563",
+        "memfree_mb": 5196,
+        "memory_mb": {
+            "nocache": {
+                "free": 19372,
+                "used": 12307
+            },
+            "real": {
+                "free": 5196,
+                "total": 31679,
+                "used": 26483
+            },
+            "swap": {
+                "cached": 0,
+                "free": 8191,
+                "total": 8191,
+                "used": 0
+            }
+        },
+        "memtotal_mb": 31679,
+        "module_setup": true,
+        "mounts": [
+            {
+                "block_available": 55752601,
+                "block_size": 4096,
+                "block_total": 62098688,
+                "block_used": 6346087,
+                "device": "/dev/nvme0n1p3",
+                "dump": 0,
+                "fstype": "btrfs",
+                "inode_available": 0,
+                "inode_total": 0,
+                "inode_used": 0,
+                "mount": "/",
+                "options": "rw,seclabel,relatime,compress=zstd:1,ssd,discard=async,space_cache=v2,subvolid=256,subvol=/root,bind",
+                "passno": 0,
+                "size_available": 228362653696,
+                "size_total": 254356226048,
+                "uuid": "16b4e1a3-13db-4b7f-96d0-cfd2e4705f75"
+            },
+            {
+                "block_available": 92152,
+                "block_size": 4096,
+                "block_total": 249195,
+                "block_used": 157043,
+                "device": "/dev/nvme0n1p2",
+                "dump": 0,
+                "fstype": "ext4",
+                "inode_available": 65491,
+                "inode_total": 65536,
+                "inode_used": 45,
+                "mount": "/boot",
+                "options": "rw,seclabel,relatime",
+                "passno": 0,
+                "size_available": 377454592,
+                "size_total": 1020702720,
+                "uuid": "52df1e5b-31f0-4a5b-8dd1-73e6c37bdf3f"
+            },
+            {
+                "block_available": 55752601,
+                "block_size": 4096,
+                "block_total": 62098688,
+                "block_used": 6346087,
+                "device": "/dev/nvme0n1p3",
+                "dump": 0,
+                "fstype": "btrfs",
+                "inode_available": 0,
+                "inode_total": 0,
+                "inode_used": 0,
+                "mount": "/home",
+                "options": "rw,seclabel,relatime,compress=zstd:1,ssd,discard=async,space_cache=v2,subvolid=257,subvol=/home,bind",
+                "passno": 0,
+                "size_available": 228362653696,
+                "size_total": 254356226048,
+                "uuid": "16b4e1a3-13db-4b7f-96d0-cfd2e4705f75"
+            },
+            {
+                "block_available": 148355,
+                "block_size": 4096,
+                "block_total": 153296,
+                "block_used": 4941,
+                "device": "/dev/nvme0n1p1",
+                "dump": 0,
+                "fstype": "vfat",
+                "inode_available": 0,
+                "inode_total": 0,
+                "inode_used": 0,
+                "mount": "/boot/efi",
+                "options": "rw,relatime,fmask=0077,dmask=0077,codepage=437,iocharset=ascii,shortname=winnt,errors=remount-ro",
+                "passno": 0,
+                "size_available": 607662080,
+                "size_total": 627900416,
+                "uuid": "9DE0-074A"
+            },
+            {
+                "block_available": 422850469,
+                "block_size": 4096,
+                "block_total": 461203328,
+                "block_used": 38352859,
+                "device": "/dev/sda1",
+                "dump": 0,
+                "fstype": "ext4",
+                "inode_available": 117210287,
+                "inode_total": 117211136,
+                "inode_used": 849,
+                "mount": "/mnt/data",
+                "options": "rw,seclabel,relatime",
+                "passno": 0,
+                "size_available": 1731995521024,
+                "size_total": 1889088831488,
+                "uuid": "d72015cc-ce18-45a7-91cd-60672df4761d"
+            }
+        ],
+        "nodename": "fedora",
+        "os_family": "RedHat",
+        "pkg_mgr": "dnf5",
+        "proc_cmdline": {
+            "BOOT_IMAGE": "(hd3,gpt2)/vmlinuz-6.18.7-200.fc43.x86_64",
+            "quiet": true,
+            "rhgb": true,
+            "ro": true,
+            "root": "UUID=16b4e1a3-13db-4b7f-96d0-cfd2e4705f75",
+            "rootflags": "subvol=root"
+        },
+        "processor": [
+            "0",
+            "AuthenticAMD",
+            "AMD Ryzen 5 7500F 6-Core Processor",
+            "1",
+            "AuthenticAMD",
+            "AMD Ryzen 5 7500F 6-Core Processor",
+            "2",
+            "AuthenticAMD",
+            "AMD Ryzen 5 7500F 6-Core Processor",
+            "3",
+            "AuthenticAMD",
+            "AMD Ryzen 5 7500F 6-Core Processor",
+            "4",
+            "AuthenticAMD",
+            "AMD Ryzen 5 7500F 6-Core Processor",
+            "5",
+            "AuthenticAMD",
+            "AMD Ryzen 5 7500F 6-Core Processor",
+            "6",
+            "AuthenticAMD",
+            "AMD Ryzen 5 7500F 6-Core Processor",
+            "7",
+            "AuthenticAMD",
+            "AMD Ryzen 5 7500F 6-Core Processor",
+            "8",
+            "AuthenticAMD",
+            "AMD Ryzen 5 7500F 6-Core Processor",
+            "9",
+            "AuthenticAMD",
+            "AMD Ryzen 5 7500F 6-Core Processor",
+            "10",
+            "AuthenticAMD",
+            "AMD Ryzen 5 7500F 6-Core Processor",
+            "11",
+            "AuthenticAMD",
+            "AMD Ryzen 5 7500F 6-Core Processor"
+        ],
+        "processor_cores": 6,
+        "processor_count": 1,
+        "processor_nproc": 12,
+        "processor_threads_per_core": 2,
+        "processor_vcpus": 12,
+        "product_name": "MS-7E28",
+        "product_serial": "NA",
+        "product_uuid": "NA",
+        "product_version": "1.0",
+        "python": {
+            "executable": "/usr/bin/python3",
+            "has_sslcontext": true,
+            "type": "cpython",
+            "version": {
+                "major": 3,
+                "micro": 2,
+                "minor": 14,
+                "releaselevel": "final",
+                "serial": 0
+            },
+            "version_info": [
+                3,
+                14,
+                2,
+                "final",
+                0
+            ]
+        },
+        "python_version": "3.14.2",
+        "real_group_id": 1000,
+        "real_user_id": 1000,
+        "selinux": {
+            "config_mode": "enforcing",
+            "mode": "permissive",
+            "policyvers": 35,
+            "status": "enabled",
+            "type": "targeted"
+        },
+        "selinux_python_present": true,
+        "service_mgr": "systemd",
+        "ssh_host_key_ecdsa_public": "AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBGP51jA+exyjPq8+eZB+MRm0Q3vHr4Z6dsKmxt1ITQxAhOGHOKY3ZHUjkc/qwX0A6GIDTIOYBU+9Vz8jAezkplw=",
+        "ssh_host_key_ecdsa_public_keytype": "ecdsa-sha2-nistp256",
+        "ssh_host_key_ed25519_public": "AAAAC3NzaC1lZDI1NTE5AAAAIHSf/abToSHHUYqu8msq9YsCLYnmOiUJKW3Rf9g7wW2b",
+        "ssh_host_key_ed25519_public_keytype": "ssh-ed25519",
+        "ssh_host_key_rsa_public": "AAAAB3NzaC1yc2EAAAADAQABAAABgQCmfheX8pkXmHQRaYM7eokhVuxGGia4WQgnPGC4ZneryuYepbD3H1DIRm9SqP7j80XxV36q18bjY/4+hRPIfUFK19kJlLs3k76tF8VVSH1eI+QgWGmV2p7Qp4Wn+31LS+OUN9zom5ZbecIrTTc0G83BURyUIx7cyiY/7A7DPJdDSERF1+rNuiP9IVyJzGrFFOu9OxWTY9r37z6ZrCf4g+75fooNOfZKU4pNcgHLdYyUXbK5jfFTjj/qdrsnhogRGpdjz4G3aox+hY6QEFJetouFKM7GNFCZxoCdMKzqnNxJKGjDGrWt4rOofthoWeAMcv9qwFN8fV3UqWwAtCWVm8Ofq+dSFwHX2wqZZ2fTiO7Dwv4OrA8HZDWl0u0XnFFIxDax7wHXmlVx4HCeoe5T+z+5U0OSyikh1DSbR0WBwJJbsEx4xVxhh+vQkoFG1jWIPcOtjs1Lh4jqedApyKw8vwU064hA1p17cVi+Hsy256JLNz7VpdRZI3zH477l9xOqgm0=",
+        "ssh_host_key_rsa_public_keytype": "ssh-rsa",
+        "swapfree_mb": 8191,
+        "swaptotal_mb": 8191,
+        "system": "Linux",
+        "system_capabilities": [
+            "i"
+        ],
+        "system_capabilities_enforced": "True",
+        "system_vendor": "Micro-Star International Co., Ltd.",
+        "systemd": {
+            "features": "+PAM +AUDIT +SELINUX -APPARMOR +IMA +IPE +SMACK +SECCOMP -GCRYPT +GNUTLS +OPENSSL +ACL +BLKID +CURL +ELFUTILS +FIDO2 +IDN2 -IDN -IPTC +KMOD +LIBCRYPTSETUP +LIBCRYPTSETUP_PLUGINS +LIBFDISK +PCRE2 +PWQUALITY +P11KIT +QRENCODE +TPM2 +BZIP2 +LZ4 +XZ +ZLIB +ZSTD +BPF_FRAMEWORK +BTF +XKBCOMMON +UTMP +SYSVINIT +LIBARCHIVE",
+            "version": 258
+        },
+        "uptime_seconds": 649449,
+        "user_dir": "/home/thogan",
+        "user_gecos": "Taylor Hogan",
+        "user_gid": 1000,
+        "user_id": "thogan",
+        "user_shell": "/bin/bash",
+        "user_uid": 1000,
+        "userspace_architecture": "x86_64",
+        "userspace_bits": "64",
+        "virtualization_role": "host",
+        "virtualization_tech_guest": [],
+        "virtualization_tech_host": [
+            "kvm"
+        ],
+        "virtualization_type": "kvm"
+    }
+}
+

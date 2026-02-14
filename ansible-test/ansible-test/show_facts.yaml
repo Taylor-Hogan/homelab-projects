@@ -1,0 +1,4 @@
+- hosts: all --limit
+  tasks:
+  - debug:
+      var: ansible_facts

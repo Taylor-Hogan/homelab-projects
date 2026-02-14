@@ -1,0 +1,1 @@
+ this is a test config file to be place in /x/y/z directory

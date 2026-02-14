@@ -1,0 +1,78 @@
+---
+- name: Create VM from Proxmox Template
+  hosts: localhost
+  vars:
+    proxmox_pass : "admin"
+    new_vm_name : "AMZ-AL-23-EC2"
+    proxmox_node_name : "jeff"
+    proxmox_host_ip : "192.168.1.55"
+    vm_template_name : "AL2023-2023.10.20260202.2-TEMPLATE"
+    hostname : "{{ new_vm_name }}"
+
+  tasks:
+
+    - name: Show all facts for the host
+      ansible.builtin.debug:
+        var: ansible_facts
+
+    - name: Clone proxmox template
+      community.general.proxmox_kvm:
+        node: "{{ proxmox_node_name }}"
+        api_user: "root@pam"
+        api_password: "{{ proxmox_pass }}"
+        api_host: "{{ proxmox_host_ip}}"
+        api_port: 8006
+        storage: "local-lvm"
+        full: true
+        #pool: "< Input Pool Name if used >"
+        clone: "{{ vm_template_name }}"
+        name: "{{ new_vm_name }}"
+        timeout: 800
+
+    - name: wait 10 seconds
+      ansible.builtin.pause:
+        seconds: 300
+
+    - name: Start VM
+      community.general.proxmox_kvm:
+        node: "{{ proxmox_node_name }}"
+        api_user: "root@pam"
+        api_password: "{{ proxmox_pass }}"
+        api_host: "{{ proxmox_host_ip}}"
+        api_port: 8006
+        #pool: "< Input Pool Name if used >"
+        
+        name: "{{ new_vm_name }}"
+        state: started
+
+    - name: wait 20 seconds
+      ansible.builtin.pause:
+        seconds: 300
+
+# - name: Set VM IP and Hostname
+#   hosts: 172.16.1.200
+#   tasks:
+#     - name: Update IP
+#       ansible.builtin.lineinfile:
+#         path: /etc/sysconfig/network-scripts/ifcfg-ens18
+#         regex: "IPADDR=172.16.1.200"
+#         line: "IPADDR={{ new_IP }}"
+
+    # - name: Update Hostname
+    #   ansible.builtin.hostname:
+    #     name: "{{ hostname }}.blessdbytes.org"
+
+    - name: Reboot new VM
+      community.general.proxmox_kvm:
+        node: "{{ proxmox_node_name }}"
+        api_user: "root@pam"
+        api_password: "{{ proxmox_pass }}"
+        api_host: "{{ proxmox_host_ip}}"
+        api_port: 8006
+        #pool: "< Input Pool Name if used >"
+        name: "{{ new_vm_name }}"
+        state: restarted
+
+    # - name: Pause for 30 seconds to wait for reboot
+    #   ansible.builtin.pause:
+    #     seconds: "10"

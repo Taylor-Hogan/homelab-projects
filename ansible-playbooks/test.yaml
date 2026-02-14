@@ -1,0 +1,13 @@
+---
+  - name: Status
+    hosts: pc
+    become: yes  
+    tasks:
+     - name: ensure ssh is running
+       dnf:
+        name: sshd
+        state: running
+     - name: ensure cockpit is running
+       dnf:
+        name: cockpit
+        state: running

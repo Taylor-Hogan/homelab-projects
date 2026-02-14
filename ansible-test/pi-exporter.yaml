@@ -1,0 +1,6 @@
+---
+- name: Deploy Prometheus Node Exporter
+  hosts: pi
+  become: true
+  roles:
+    - prometheus.prometheus.node_exporter
