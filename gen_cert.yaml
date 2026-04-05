@@ -1,0 +1,58 @@
+---
+- hosts: localhost
+  connection: local
+  vars:
+    cert_dir: "./files/certs"
+    # Update these to match your exact inventory names
+    nodes: 
+      - "kafka1.home-lab.test.from.home"
+      - "kafka2.home-lab.test.from.home"
+      - "kafka3.home-lab.test.from.home"
+      - "kafka4.home-lab.test.from.home"
+      - "kafka5.home-lab.test.from.home"
+      - "zookeeper1.home-lab.test.from.home"
+      - "zookeeper2.home-lab.test.from.home"
+      - "zookeeper3.home-lab.test.from.home"
+      - "zookeeper4.home-lab.test.from.home"
+      - "zookeeper5.home-lab.test.from.home"
+    ca_password: "TestCAPassword"
+    ks_password: "TestStorePassword"
+
+  tasks:
+    - name: Ensure clean cert directory
+      file: 
+        path: "{{ cert_dir }}"
+        state: "{{ item }}"
+      loop: [absent, directory]
+
+    # --- PHASE 1: THE CA ---
+    - name: Generate CA Private Key and Cert
+      shell: >
+        openssl genrsa -out {{ cert_dir }}/ca-key 2048 &&
+        openssl req -new -x509 -key {{ cert_dir }}/ca-key -out {{ cert_dir }}/ca-cert 
+        -days 3650 -subj "/CN=HoganHomeLabCA"
+
+    # --- PHASE 2: THE NODES (Strict CN with your Domain) ---
+    - name: Generate Keystore and CSR
+      shell: >
+        keytool -keystore {{ cert_dir }}/{{ item }}.keystore.jks -alias {{ item }} -validity 365 
+        -genkey -keyalg RSA -storepass {{ ks_password }} -keypass {{ ks_password }}
+        -dname "CN={{ item }}, OU=Lab, O=Hogan, L=Huntsville, ST=AL, C=US" &&
+        keytool -keystore {{ cert_dir }}/{{ item }}.keystore.jks -alias {{ item }} 
+        -certreq -file {{ cert_dir }}/{{ item }}.csr -storepass {{ ks_password }}
+      loop: "{{ nodes }}"
+
+    - name: Sign and Import Node Certs
+      shell: >
+        openssl x509 -req -CA {{ cert_dir }}/ca-cert -CAkey {{ cert_dir }}/ca-key 
+        -in {{ cert_dir }}/{{ item }}.csr -out {{ cert_dir }}/{{ item }}-signed -days 365 -CAcreateserial &&
+        keytool -keystore {{ cert_dir }}/{{ item }}.keystore.jks -alias CARoot 
+        -import -file {{ cert_dir }}/ca-cert -storepass {{ ks_password }} -noprompt &&
+        keytool -keystore {{ cert_dir }}/{{ item }}.keystore.jks -alias {{ item }} 
+        -import -file {{ cert_dir }}/{{ item }}-signed -storepass {{ ks_password }} -noprompt
+      loop: "{{ nodes }}"
+
+    - name: Create Global Truststore
+      shell: >
+        keytool -keystore {{ cert_dir }}/truststore.jks -alias CARoot 
+        -import -file {{ cert_dir }}/ca-cert -storepass {{ ks_password }} -noprompt
