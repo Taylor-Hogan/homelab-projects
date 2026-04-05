@@ -1,0 +1,82 @@
+---
+# 1. Generate all certificates locally on the control node
+- name: Generate Certificates
+  import_playbook: gen_cert.yml
+
+# 2. Universal Pre-requisites for all nodes
+- name: Global Infrastructure Setup
+  hosts: 
+    - zookeeper-nodes
+    - kafka-nodes
+  become: true
+  tasks:
+    - name: Ensure Java and QEMU are ready
+      dnf:
+        name:
+          - qemu-guest-agent
+          - java-17-amazon-corretto-headless
+        state: present
+
+    - name: Enable and start QEMU Guest Agent
+      systemd:
+        name: qemu-guest-agent
+        state: started
+        enabled: true
+
+# 3. Zookeeper Deployment
+- name: Deploy Secure Zookeeper
+  hosts: zookeeper-nodes
+  become: true
+  pre_tasks:
+    - name: Create Zookeeper certificate directory
+      file:
+        path: /var/lib/zookeeper
+        state: directory
+        owner: zookeeper
+        group: zookeeper
+        mode: '0755'
+
+    - name: Push Zookeeper Keystore and Truststore
+      copy:
+        src: "./files/certs/{{ item.src }}"
+        dest: "/var/lib/zookeeper/{{ item.dest }}"
+        owner: zookeeper
+        group: zookeeper
+        mode: '0400'
+      loop:
+        - src: "{{ inventory_hostname }}.keystore.jks"
+          dest: "{{ inventory_hostname }}.keystore.jks"
+        - src: "truststore.jks"
+          dest: "truststore.jks"
+
+  roles:
+    - sleighzy.zookeeper
+
+# 4. Kafka Deployment
+- name: Deploy Secure Kafka
+  hosts: kafka-nodes
+  become: true
+  pre_tasks:
+    - name: Create Kafka certificate directory
+      file:
+        path: /var/lib/kafka
+        state: directory
+        owner: kafka
+        group: kafka
+        mode: '0755'
+
+    - name: Push Kafka Keystore and Truststore
+      copy:
+        src: "./files/certs/{{ item.src }}"
+        dest: "/var/lib/kafka/{{ item.dest }}"
+        owner: kafka
+        group: kafka
+        mode: '0400'
+      loop:
+        - src: "{{ inventory_hostname }}.keystore.jks"
+          dest: "{{ inventory_hostname }}.keystore.jks"
+        - src: "truststore.jks"
+          dest: "truststore.jks"
+
+  roles:
+    - sleighzy.kafka
