@@ -15,7 +15,7 @@
       - "zookeeper3.home-lab.test.from.home"
       - "zookeeper4.home-lab.test.from.home"
       - "zookeeper5.home-lab.test.from.home"
-    ca_password: "TestCAPassword"
+    ca_password: "TestStorePassword"
     ks_password: "TestStorePassword"
 
   tasks:
