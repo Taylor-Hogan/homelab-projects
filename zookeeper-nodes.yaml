@@ -1,0 +1,17 @@
+---
+# Version and Source
+zookeeper_mirror: "https://archive.apache.org/dist/zookeeper"
+zookeeper_version: "3.9.2"
+
+# Security and Networking
+zookeeper_firewalld: true
+zookeeper_servers_use_inventory_hostname: true
+zookeeper_client_port: 2281
+zookeeper_ssl_client_port: 2281
+zookeeper_ssl_quorum: true
+
+# Keystore/Truststore Paths
+zookeeper_ssl_keystore_location: "/var/lib/zookeeper/{{ inventory_hostname }}.keystore.jks"
+zookeeper_ssl_keystore_password: "TestStorePassword"
+zookeeper_ssl_truststore_location: "/var/lib/zookeeper/truststore.jks"
+zookeeper_ssl_truststore_password: "TestStorePassword"

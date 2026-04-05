@@ -1,0 +1,28 @@
+---
+# Version and Source
+kafka_download_base_url: "https://archive.apache.org/dist/kafka"
+kafka_version: "3.8.0"
+kafka_download_validate_certs: no
+
+# Connectivity
+kafka_zookeeper_connect: "zookeeper1.home-lab.test.from.home:2181,zookeeper2.home-lab.test.from.home:2181,zookeeper3.home-lab.test.from.home:2181,zookeeper4.home-lab.test.from.home:2181,zookeeper5.home-lab.test.from.home:2181"
+
+# SSL/TLS Security Settings
+kafka_listeners: 
+  - "SSL://0.0.0.0:9093"
+kafka_advertised_listeners: 
+  - "SSL://{{ inventory_hostname }}:9093"
+kafka_security_inter_broker_protocol: SSL
+
+# Keystore/Truststore Paths
+kafka_ssl_keystore_location: "/var/lib/kafka/{{ inventory_hostname }}.keystore.jks"
+kafka_ssl_keystore_password: "TestStorePassword"
+kafka_ssl_key_password: "TestStorePassword"
+kafka_ssl_truststore_location: "/var/lib/kafka/truststore.jks"
+kafka_ssl_truststore_password: "TestStorePassword"
+kafka_ssl_client_auth: required
+
+# Topic Management
+kafka_auto_create_topics_enable: false
+kafka_delete_topic_enable: false
+kafka_log_retention_hours: 168
