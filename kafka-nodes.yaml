@@ -26,3 +26,7 @@ kafka_ssl_client_auth: required
 kafka_auto_create_topics_enable: false
 kafka_delete_topic_enable: false
 kafka_log_retention_hours: 168
+
+# Inside your group_vars/kafka.yml
+kafka_log_dirs: "/data1/kafka-logs,/data2/kafka-logs,/data3/kafka-logs"
+
