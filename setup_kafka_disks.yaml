@@ -1,0 +1,36 @@
+- name: Prepare Multi-Disk Storage for Kafka
+  hosts: kafka-nodes
+  become: yes
+  vars:
+    # m6 instances: nvme0n1 is OS, 1-3 are your data disks
+    kafka_data_disks:
+      - { dev: "/dev/nvme1n1", mount: "/data1" }
+      - { dev: "/dev/nvme2n1", mount: "/data2" }
+      - { dev: "/dev/nvme3n1", mount: "/data3" }
+
+  tasks:
+    - name: Create XFS filesystem on EBS volumes
+      community.general.filesystem:
+        fstype: xfs
+        dev: "{{ item.dev }}"
+        force: no  # Safety: won't wipe disk if it's already formatted
+      loop: "{{ kafka_data_disks }}"
+
+    - name: Mount disks and add to /etc/fstab
+      ansible.posix.mount:
+        path: "{{ item.mount }}"
+        src: "{{ item.dev }}"
+        fstype: xfs
+        opts: noatime,nodiratime # Performance boost: stops unnecessary metadata writes
+        state: mounted
+      loop: "{{ kafka_data_disks }}"
+
+    - name: Create Kafka log subdirectories with correct ownership
+      file:
+        path: "{{ item.mount }}/kafka-logs"
+        state: directory
+        owner: kafka
+        group: kafka
+        mode: '0755'
+      loop: "{{ kafka_data_disks }}"
+      
