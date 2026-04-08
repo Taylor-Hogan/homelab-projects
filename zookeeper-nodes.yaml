@@ -6,12 +6,42 @@ zookeeper_version: "3.9.2"
 # Security and Networking
 zookeeper_firewalld: true
 zookeeper_servers_use_inventory_hostname: true
-zookeeper_client_port: 2281
-zookeeper_ssl_client_port: 2281
-zookeeper_ssl_quorum: true
 
-# Keystore/Truststore Paths
-zookeeper_ssl_keystore_location: "/var/lib/zookeeper/{{ inventory_hostname }}.keystore.jks"
-zookeeper_ssl_keystore_password: "TestStorePassword"
-zookeeper_ssl_truststore_location: "/var/lib/zookeeper/truststore.jks"
-zookeeper_ssl_truststore_password: "TestStorePassword"
+#this passes configs into zookeeper
+zookeeper_config_params:
+#  ssl.clientAuth: "want" #Server asks for a cert; if provided, it validates it. If not provided, it allows the connection anyway.
+  ssl.clientAuth: "none" #if you dont want to connect via certs
+  4lw.commands.whitelist: "*"
+  clientPort: 2181 #plaintext port (nc will work)
+  secureClientPort: 2282
+
+  #tell zoo what auth to use
+  authProvider.x509: org.apache.zookeeper.server.auth.X509AuthenticationProvider
+  serverCnxnFactory: org.apache.zookeeper.server.NettyServerCnxnFactory
+
+  serverCnxnFactory: "org.apache.zookeeper.server.NettyServerCnxnFactory"
+  ssl.keyStore.location: "/var/lib/zookeeper/{{ inventory_hostname }}.keystore.jks"
+  ssl.keyStore.password: "ShouldBeSamePassword"
+  ssl.keyStore.type: "PKCS12"
+  ssl.trustStore.location: "/var/lib/zookeeper/truststore.jks"
+  ssl.trustStore.password: "ShouldBeSamePassword"
+  ssl.quorum.trustStore.type: "PKCS12"
+  # Optional: If you want to force SSL for Quorum (Internal node-to-node)
+  ssl.quorum.keyStore.location: "/var/lib/zookeeper/{{ inventory_hostname }}.keystore.jks"
+  ssl.quorum.keyStore.password: "ShouldBeSamePassword"
+  ssl.quorum.trustStore.location: "/var/lib/zookeeper/truststore.jks"
+  ssl.quorum.trustStore.password: "ShouldBeSamePassword"
+  ssl.quorum.trustStore.type: "PKCS12"
+
+  #tells zookeeper where to store its datalogs
+  #dataDir=PATH-TO-YOUR-KAFKA-DIR/data/zookeeper
+  #
+
+# disable the per-ip limit on the number of connections since this is a non-production config
+  maxClientCnxns: "0"
+
+#enabling adminserver
+  admin.enableServer: true
+  admin.serverPort: 9090
+#  server.1: "localhost:2888:3888"
+
