@@ -1,0 +1,79 @@
+---
+- hosts: localhost
+  connection: local
+  vars:
+    cert_dir: "./files/certs"
+    ca_cert_path: "./files/ca/ca-cert.pem"
+    ca_key_path: "./files/ca/ca-key.pem"
+    ks_password: "TestStorePassword"
+    
+    # Combined list for efficiency
+    nodes: 
+      - "kafka1.home-lab.test.from.home"
+      - "kafka2.home-lab.test.from.home"
+      - "kafka3.home-lab.test.from.home"
+      - "kafka4.home-lab.test.from.home"
+      - "kafka5.home-lab.test.from.home"
+      - "zookeeper1.home-lab.test.from.home"
+      - "zookeeper2.home-lab.test.from.home"
+      - "zookeeper3.home-lab.test.from.home"
+      - "zookeeper4.home-lab.test.from.home"
+      - "zookeeper5.home-lab.test.from.home"
+
+  tasks:
+    - name: Create output directory
+      file:
+        path: "{{ cert_dir }}"
+        state: directory
+        mode: '0755'
+
+    - name: Generate Node Private Keys
+      community.crypto.openssl_privatekey:
+        path: "{{ cert_dir }}/{{ item }}.key"
+        type: RSA
+        size: 2048
+      loop: "{{ nodes }}"
+
+    - name: Generate Node CSRs (with SAN)
+      community.crypto.openssl_csr:
+        path: "{{ cert_dir }}/{{ item }}.csr"
+        privatekey_path: "{{ cert_dir }}/{{ item }}.key"
+        common_name: "{{ item }}"
+        subject_alt_name: "DNS:{{ item }}"
+      loop: "{{ nodes }}"
+
+    - name: Sign Node Certificates with provided CA
+      community.crypto.x509_certificate:
+        path: "{{ cert_dir }}/{{ item }}.crt"
+        csr_path: "{{ cert_dir }}/{{ item }}.csr"
+        ownca_path: "{{ ca_cert_path }}"
+        ownca_privatekey_path: "{{ ca_key_path }}"
+        provider: ownca
+        entitlement: "serverAuth,clientAuth"
+      loop: "{{ nodes }}"
+
+    - name: Package into PKCS12
+      community.crypto.openssl_pkcs12:
+        action: export
+        path: "{{ cert_dir }}/{{ item }}.p12"
+        friendly_name: "{{ item }}"
+        privatekey_path: "{{ cert_dir }}/{{ item }}.key"
+        certificate_path: "{{ cert_dir }}/{{ item }}.crt"
+        ca_certificates: "{{ ca_cert_path }}"
+        passphrase: "{{ ks_password }}"
+      loop: "{{ nodes }}"
+
+    - name: Final Step - Convert to JKS Keystore
+      shell: >
+        keytool -importkeystore -destkeystore {{ cert_dir }}/{{ item }}.keystore.jks
+        -srckeystore {{ cert_dir }}/{{ item }}.p12 -srcstoretype PKCS12
+        -srcstorepass {{ ks_password }} -deststorepass {{ ks_password }}
+        -noprompt
+      loop: "{{ nodes }}"
+
+    - name: Generate the Global Truststore
+      community.general.java_keystore:
+        name: CARoot
+        certificate_path: "{{ ca_cert_path }}"
+        dest: "{{ cert_dir }}/truststore.jks"
+        password: "{{ ks_password }}"
