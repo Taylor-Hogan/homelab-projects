@@ -22,23 +22,23 @@ zookeeper_config_params:
   serverCnxnFactory: "org.apache.zookeeper.server.NettyServerCnxnFactory"
   ssl.keyStore.location: "/var/lib/zookeeper/{{ inventory_hostname }}.keystore.jks"
   ssl.keyStore.password: "ShouldBeSamePassword"
-  ssl.keyStore.type: "PKCS12"
+  #ssl.keyStore.type: "PKCS12"
   ssl.trustStore.location: "/var/lib/zookeeper/truststore.jks"
   ssl.trustStore.password: "ShouldBeSamePassword"
-  ssl.quorum.trustStore.type: "PKCS12"
+  #ssl.quorum.trustStore.type: "PKCS12"
   # Optional: If you want to force SSL for Quorum (Internal node-to-node)
   ssl.quorum.keyStore.location: "/var/lib/zookeeper/{{ inventory_hostname }}.keystore.jks"
   ssl.quorum.keyStore.password: "ShouldBeSamePassword"
   ssl.quorum.trustStore.location: "/var/lib/zookeeper/truststore.jks"
   ssl.quorum.trustStore.password: "ShouldBeSamePassword"
-  ssl.quorum.trustStore.type: "PKCS12"
+  #ssl.quorum.trustStore.type: "PKCS12"
 
   #tells zookeeper where to store its datalogs
   #dataDir=PATH-TO-YOUR-KAFKA-DIR/data/zookeeper
   #
 
 # disable the per-ip limit on the number of connections since this is a non-production config
-  maxClientCnxns: "0"
+  maxClientCnxns: "30"
 
 #enabling adminserver
   admin.enableServer: true

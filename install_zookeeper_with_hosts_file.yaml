@@ -1,0 +1,36 @@
+- hosts: zookeeper-nodes
+  gather_facts: True
+  remote_user: ec2-user
+  become: true  
+  pre_tasks:
+# --- QEMU Guest Agent Setup ---
+    - name: Install QEMU Guest Agent
+      dnf:
+        name: qemu-guest-agent
+        state: present
+      ignore_errors: true
+      register: qemu_install_result
+
+    - name: Enable and start QEMU Guest Agent
+      systemd:
+        name: qemu-guest-agent
+        state: started
+        enabled: true
+        masked: no
+      when: qemu_install_result is succeeded
+
+    - name: Install Amazon Corretto 17 on AL2023
+      dnf:
+        name: java-17-amazon-corretto-headless
+        state: present
+
+
+    - name: Update /etc/hosts with cluster nodes
+      lineinfile:
+        path: /etc/hosts
+        regexp: ".*{{ item }}$"
+        line: "{{ hostvars[item]['ansible_host'] | default(item) }} {{ item }}"
+        state: present
+      loop: "{{ groups['zookeeper-nodes'] }}"
+  roles:
+    - sleighzy.zookeeper

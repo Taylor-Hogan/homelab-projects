@@ -4,32 +4,43 @@ syncLimit=5
 dataDir=/var/lib/zookeeper
 dataLogDir=/var/lib/zookeeper
 
-# --- CLEANED SECURITY SECTION ---
-ssl.clientAuth=none
-4lw.commands.whitelist=*
-secureClientPort=2282
-
-# Force Netty and X509
+# --- SERVER IDENTITY & ENGINE ---
+# This is REQUIRED for SSL to function
 authProvider.x509=org.apache.zookeeper.server.auth.X509AuthenticationProvider
 serverCnxnFactory=org.apache.zookeeper.server.NettyServerCnxnFactory
 
-# Key and Truststore (Explicitly PKCS12)
-ssl.keyStore.location=/var/lib/zookeeper/zookeeper1.home-lab.test.from.home.keystore.jks
+# --- SECURITY SECTION ---
+ssl.clientAuth=none
+4lw.commands.whitelist=*
+secureClientPort=2288
+sslQuorum=true
+quorumListenOnAllIPs=true
+
+ClientPort=2181
+
+# Key and Truststore
+ssl.keyStore.location=/var/lib/zookeeper/{{ inventory_hostname }}.keystore.jks
 ssl.keyStore.password=ShouldBeSamePassword
-ssl.keyStore.type=PKCS12
+#ssl.keyStore.type=PKCS12
 ssl.trustStore.location=/var/lib/zookeeper/truststore.jks
 ssl.trustStore.password=ShouldBeSamePassword
-ssl.trustStore.type=PKCS12
+#ssl.trustStore.type=PKCS12
 
-# Quorum Security
-ssl.quorum.keyStore.location=/var/lib/zookeeper/zookeeper1.home-lab.test.from.home.keystore.jks
+# Quorum Security (Internal Cluster Traffic)
+ssl.quorum.keyStore.location=/var/lib/zookeeper/{{ inventory_hostname }}.keystore.jks
 ssl.quorum.keyStore.password=ShouldBeSamePassword
-ssl.quorum.keyStore.type=PKCS12
+#ssl.quorum.keyStore.type=PKCS12
 ssl.quorum.trustStore.location=/var/lib/zookeeper/truststore.jks
 ssl.quorum.trustStore.password=ShouldBeSamePassword
-ssl.quorum.trustStore.type=PKCS12
+#ssl.quorum.trustStore.type=PKCS12
 
 # Global Limits & Admin
 maxClientCnxns=0
 admin.enableServer=true
 admin.serverPort=9090
+
+server.1=zookeeper1.home-lab.test.from.home:2288:3888
+server.2=zookeeper2.home-lab.test.from.home:2288:3888
+server.3=zookeeper3.home-lab.test.from.home:2288:3888
+server.4=zookeeper4.home-lab.test.from.home:2288:3888
+server.5=zookeeper5.home-lab.test.from.home:2288:3888
