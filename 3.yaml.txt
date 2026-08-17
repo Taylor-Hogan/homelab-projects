@@ -1,0 +1,136 @@
+---
+- name: Install and Configure Docker with Compose on Amazon Linux / RHEL
+  hosts: all
+  become: true
+  gather_facts: true
+
+  vars:
+    docker_compose_dir: "/usr/libexec/docker/cli-plugins"
+    target_user: "{{ ansible_user | default(ansible_ssh_user, true) }}"
+
+  tasks:
+    - name: Debug specific core system facts (Cleaner view)
+      ansible.builtin.debug:
+        msg:
+          - "Distribution: {{ ansible_distribution }} {{ ansible_distribution_version }}"
+          - "Architecture: {{ ansible_architecture }}"
+          - "Kernel: {{ ansible_kernel }}"
+          - "IP Address: {{ ansible_default_ipv4.address | default('N/A') }}"
+
+    - name: Ensure all installed packages are up to date
+      ansible.builtin.dnf:
+        name: "*"
+        state: latest
+
+    - name: Install Docker package from default repository
+      ansible.builtin.dnf:
+        name: docker
+        state: present
+
+    - name: Start and enable Docker service
+      ansible.builtin.systemd:
+        name: docker
+        state: started
+        enabled: true
+
+    - name: Add current user to the Docker group
+      ansible.builtin.user:
+        name: "{{ target_user }}"
+        groups: docker
+        append: true
+      when: target_user is defined and target_user != ""
+
+    - name: Create Docker CLI plugins directory
+      ansible.builtin.file:
+        path: "{{ docker_compose_dir }}"
+        state: directory
+        mode: '0755'
+        owner: root
+        group: root
+
+    - name: Download latest Docker Compose plugin
+      ansible.builtin.get_url:
+        url: "https://github.com/docker/compose/releases/latest/download/docker-compose-linux-{{ ansible_architecture }}"
+        dest: "{{ docker_compose_dir }}/docker-compose"
+        mode: '0755'
+        owner: root
+        group: root
+
+    - name: Restart Docker service to apply plugin configurations
+      ansible.builtin.systemd:
+        name: docker
+        state: restarted
+
+    - name: Verify Docker Compose installation
+      ansible.builtin.command: docker compose version
+      register: docker_compose_version
+      changed_when: false
+
+    - name: Display Docker Compose version
+      ansible.builtin.debug:
+        msg: "{{ docker_compose_version.stdout }}"
+
+    - name: Test container lifecycle with sanity log output
+      block:
+        - name: Pull test container image
+          ansible.builtin.command: docker pull alpine:latest
+          register: docker_pull
+          changed_when: true
+
+        - name: Display image pull output
+          ansible.builtin.debug:
+            msg: "{{ docker_pull.stdout_lines }}"
+
+        - name: Start container that generates explicit log output
+          ansible.builtin.command: docker run -d --name ansible_test_container -v ansible_test_vol:/data alpine:latest sh -c "echo 'Sanity check':' Container started successfully' && echo 'Writing test data to volume' && echo 'Hello from the volume' > /data/test.txt && cat /data/test.txt && sleep 30"
+          register: docker_run
+          changed_when: true
+
+        - name: Display container start ID
+          ansible.builtin.debug:
+            msg: "Container started with ID: {{ docker_run.stdout }}"
+
+        - name: Show running containers
+          ansible.builtin.command: docker ps -f name=ansible_test_container
+          register: running_containers
+          changed_when: false
+
+        - name: Display running container status
+          ansible.builtin.debug:
+            msg: "{{ running_containers.stdout_lines }}"
+
+        - name: Fetch container logs for sanity verification
+          ansible.builtin.command: docker logs ansible_test_container
+          register: container_logs
+          changed_when: false
+
+        - name: Display container logs on screen
+          ansible.builtin.debug:
+            msg: "{{ container_logs.stdout_lines }}"
+
+        - name: Stop the test container
+          ansible.builtin.command: docker stop ansible_test_container
+          register: docker_stop
+          changed_when: true
+
+        - name: Display container stop output
+          ansible.builtin.debug:
+            msg: "Stopped container: {{ docker_stop.stdout }}"
+
+        - name: Remove the container and its associated volume
+          ansible.builtin.command: docker rm -v ansible_test_container
+          register: docker_rm
+          changed_when: true
+
+        - name: Display container removal output
+          ansible.builtin.debug:
+            msg: "Removed container: {{ docker_rm.stdout }}"
+
+        - name: Remove the test volume explicitly
+          ansible.builtin.command: docker volume rm ansible_test_vol
+          register: volume_rm
+          changed_when: true
+
+        - name: Display volume removal output
+          ansible.builtin.debug:
+            msg: "Removed volume: {{ volume_rm.stdout }}"

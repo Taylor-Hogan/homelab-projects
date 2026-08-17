@@ -1,0 +1,69 @@
+---
+- name: Install and Configure Docker with Compose on Amazon Linux / RHEL
+  hosts: all
+  become: true
+  gather_facts: true
+  vars:
+    docker_compose_dir: "/usr/libexec/docker/cli-plugins"
+    target_user: "{{ ansible_user | default(ansible_ssh_user, true) }}"
+
+  tasks:
+    - name: Debug collected facts
+      ansible.builtin.debug:
+        msg: >-
+          Running on {{ ansible_distribution }} {{ ansible_distribution_version }}
+          ({{ ansible_architecture }}) with user {{ target_user | default('root') }}.
+
+  #  - name: Debug all gathered facts
+      # ansible.builtin.debug:
+        #        var: ansible_facts
+
+    - name: Ensure all installed packages are up to date
+      ansible.builtin.dnf:
+        name: "*"
+        state: latest
+
+    - name: Install Docker package from default repository
+      ansible.builtin.dnf:
+        name: docker
+        state: present
+
+    - name: Start and enable Docker service
+      ansible.builtin.systemd:
+        name: docker
+        state: started
+        enabled: true
+
+    - name: Add current user to the Docker group
+      ansible.builtin.user:
+        name: "{{ target_user }}"
+        groups: docker
+        append: true
+      when: target_user is defined and target_user != ""
+
+    - name: Create Docker CLI plugins directory
+      ansible.builtin.file:
+        path: "{{ docker_compose_dir }}"
+        state: directory
+        mode: '0755'
+        owner: root
+        group: root
+
+    - name: Download latest Docker Compose plugin
+      ansible.builtin.get_url:
+        url: "https://github.com/docker/compose/releases/latest/download/docker-compose-linux-{{ ansible_architecture }}"
+        dest: "{{ docker_compose_dir }}/docker-compose"
+        mode: '0755'
+        owner: root
+        group: root
+
+    - name: Restart Docker service to apply plugin configurations
+      ansible.builtin.systemd:
+        name: docker
+        state: restarted
+
+    - name: Verify Docker Compose installation
+      ansible.builtin.command: docker compose version
+      register: docker_compose_version
+      changed_when: false
+
